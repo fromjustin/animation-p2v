@@ -1,0 +1,197 @@
+/* Import Outfit font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap');
+body {
+    background-color: #EEF3F6;
+}
+
+.typing-container {
+    display: flex;
+    width: fit-content;
+    min-width: 410px;
+    margin-top: 80px;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: left;
+    padding: 16px 24px;
+    border-radius: 16px;
+    background-color: white;
+    gap: 12px;
+    transition: min-width 0.5s ease-in-out;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Add class for expanded state */
+.typing-container.expanded {
+    min-width: 640px;
+    flex-direction: column;
+    padding: 48px 64px;
+    gap: 0;
+}
+
+.typing-text {
+    white-space: nowrap;
+}
+
+.typing-text::before {
+    content: "";
+    animation: typing 8s steps(40) infinite;
+    overflow: hidden;
+    display: inline-block;
+    border-right: 2px solid transparent;
+}
+
+.loader {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    animation: grow 1s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes grow {
+    0%, 40%, 100% {
+        transform: scale(1);
+        background-color: #94B3EE;
+    }
+    20% {
+        transform: scale(1.75);
+        background-color: #1B6AFC;
+    }
+}
+
+.spinning-text {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.digit {
+    display: inline-block;
+    text-align: center;
+    font-size: 80px;
+    line-height: 1.25em;
+    font-weight: 900;
+    height: 1.25em;
+    overflow: hidden;
+}
+
+.spinner {
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform;
+    filter: blur(0px);
+}
+
+.spinner.spin {
+    transform: translateY(calc(-100% + 1.25em));
+    filter: blur(2px);
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+                filter 0.5s ease-in;
+}
+
+.spinner.spin-end {
+    transform: translateY(calc(-100% + 1.25em));
+    filter: blur(0px);
+
+}
+
+.spinner div {
+    height: 1.25em;
+    line-height: 1.25em;
+    
+}
+
+.digit-animation {
+    animation: spinDigit 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes spinDigit {
+    0% { 
+        transform: rotateX(0deg);
+    }
+    100% { 
+        transform: rotateX(3600deg); /* 10 full rotations */
+    }
+}
+
+/* Add these new styles */
+.result-content {
+    flex: auto;
+    width: 100%;
+    left: 0;
+}
+
+.result-text {
+    text-align: center;
+    font-size: 18px;
+    margin: 12px 0 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.result-text.visible {
+    opacity: 1;
+}
+
+.info-icon {
+    fill: #000;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin-top: 56px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.button-container.visible {
+    opacity: 1;
+}
+
+.btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    padding: 16px 40px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-back {
+    background: #EEF3F6;
+    color: #1A1A1A;
+}
+
+.btn-next {
+    background: #FFC247;
+    color: #1A1A1A;
+}
+
+.hidden {
+    display: none;
+}
+
