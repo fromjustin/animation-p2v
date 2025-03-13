@@ -1,6 +1,6 @@
 const texts = [
     "Finding voter data for Chattanooga, TN",
-    "7,030 voter files found",
+    "7,030 voters found",
     "Analyzing past election turnout rates",
     "Calculating votes needed to win your race"
 ];
